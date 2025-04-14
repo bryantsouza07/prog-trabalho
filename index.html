@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORINTHIANS</title>
+    <style>
+        /* CSS com acessibilidade e estilo único */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gold: #FFD700;
+            --bg: #f5f5f5;
+            --text: #333333;
+            --contrast-bg: #000;
+            --contrast-text: #fff;
+            --base-font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            font-size: var(--base-font-size);
+            transition: all 0.3s ease;
+        }
+        
+        /* Modo alto contraste */
+        body.high-contrast {
+            background-color: var(--contrast-bg);
+            color: var(--contrast-text);
+        }
+        
+        body.high-contrast header,
+        body.high-contrast footer {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: yellow !important;
+        }
+        
+        body.high-contrast nav {
+            background-color: #333 !important;
+        }
+        
+        body.high-contrast a {
+            color: yellow !important;
+        }
+        
+        body.high-contrast button {
+            background-color: yellow !important;
+            color: black !important;
+            border: 1px solid white !important;
+        }
+        
+        /* Layout único para o cabeçalho */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, #333 100%);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .slogan {
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: var(--gold);
+        }
+        
+        /* Barra de acessibilidade única */
+        .accessibility-bar {
+            background-color: var(--black);
+            padding: 0.5rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .accessibility-tools {
+            display: flex;
+            gap: 5px;
+            margin-left: auto;
+        }
+        
+        .accessibility-tools button {
+            padding: 5px 10px;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: var(--black);
+            color: var(--gold);
+            font-weight: bold;
+            min-width: 40px;
+            transition: all 0.2s;
+        }
+        
+        .accessibility-tools button:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Navegação estilizada */
+        nav {
+            background-color: var(--black);
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: block;
+            position: relative;
+        }
+        
+        nav a:hover, nav a:focus {
+            background-color: var(--gold);
+            color: var(--black);
+            outline: none;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after, nav a:focus::after {
+            width: 70%;
+        }
+        
+        /* Conteúdo principal */
+        main {
+            padding: 2rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: var(--black);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .highlight {
+            background-color: var(--gold);
+            padding: 0.2rem 0.5rem;
+            color: var(--black);
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        
+        /* Elementos de imagem */
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid var(--black);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        figcaption {
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+        
+        /* Cards de jogadores */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .player-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .player-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        .player-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .player-info h3 {
+            margin-top: 0;
+            color: var(--black);
+        }
+        
+        /* Rodapé estilizado */
+        footer {
+            background: linear-gradient(135deg, var(--black) 0%, #333 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 5px solid var(--gold);
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* Elementos de acessibilidade */
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem;
+            z-index: 1000;
+            font-weight: bold;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .skip-link:focus {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: auto;
+            height: auto;
+            clip: auto;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .accessibility-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .accessibility-tools {
+                margin: 0.5rem 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Link para pular navegação -->
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <!-- Barra de acessibilidade no topo -->
+    <div class="accessibility-bar">
+        <span>Opções de Acessibilidade:</span>
+        <div class="accessibility-tools">
+            <button id="increaseFont" aria-label="Aumentar tamanho do texto">A+</button>
+            <button id="decreaseFont" aria-label="Diminuir tamanho do texto">A-</button>
+            <button id="resetFont" aria-label="Resetar tamanho do texto">A</button>
+            <button id="toggleContrast" aria-label="Alternar alto contraste">☀ Contraste</button>
+        </div>
+    </div>
+    
+    <!-- Cabeçalho personalizado -->
+    <header>
+        <div class="header-content">
+            <h1 class="logo">CORINTHIANS</h1>
+            <p class="slogan">"Com amor, paixão e glórias"</p>
+        </div>
+    </header>
+    
+    <!-- Navegação estilizada -->
+    <nav aria-label="Navegação principal">
+        <ul>
+            <li><a href="#historia" accesskey="1">História</a></li>
+            <li><a href="#titulos" accesskey="2">Títulos</a></li>
+            <li><a href="#idolos" accesskey="3">Ídolos</a></li>
+            <li><a href="#arena" accesskey="4">Arena</a></li>
+            <li><a href="#torcida" accesskey="5">Torcida</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Conteúdo principal -->
+    <main id="conteudo">
+        <section id="historia" aria-labelledby="historia-heading">
+            <h2 id="historia-heading">Nossa História</h2>
+            <figure>
+                <img src="./curintia.jpg" alt="Imagem histórica da fundação do Corinthians em 1910" width="800" height="400">
+                <figcaption>Fundado em 1º de setembro de 1910 por operários</figcaption>
+            </figure>
+            <p>O Sport Club Corinthians Paulista foi fundado em 1º de setembro de 1910 por um grupo de operários do bairro do Bom Retiro, em São Paulo. O nome foi inspirado no Corinthian FC da Inglaterra, que estava em turnê pelo Brasil na época.</p>
+            <p>Conhecido como "Time do Povo", o Corinthians se tornou um dos clubes mais amados do Brasil, com uma torcida que ultrapassa os 30 milhões de fãs em todo o país.</p>
+            
+            <h3>Marcos Históricos</h3>
+            <ul>
+                <li><strong>1914</strong>: Primeiro título paulista</li>
+                <li><strong>1982</strong>: Democracia Corinthiana</li>
+                <li><strong>1990</strong>: Primeiro título brasileiro</li>
+                <li><strong>2000</strong>: Primeiro título mundial</li>
+                <li><strong>2012</strong>: Conquista da Libertadores e bicampeonato mundial</li>
+            </ul>
+        </section>
+        
+            
+            <h3>Títulos Principais</h3>
+            <ul>
+                <li><strong>Mundiais</strong>: 2 (2000 e 2012)</li>
+                <li><strong>Libertadores</strong>: 1 (2012)</li>
+                <li><strong>Brasileirão</strong>: 7 (1990, 1998, 1999, 2005, 2011, 2015, 2017)</li>
+                <li><strong>Copa do Brasil</strong>: 3 (1995, 2002, 2009)</li>
+                <li><strong>Paulistão</strong>: 30 títulos</li>
+            </ul>
+        </section>
+        
+        <section id="idolos" aria-labelledby="idolos-heading">
+            <h2 id="idolos-heading">Lendas do Timão</h2>
+            
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="./socrates.jpg" alt="Sócrates, ídolo corinthiano">
+                    </div>
+                    <div class="player-info">
+                        <h3>Sócrates</h3>
+                        <p>Médico, capitão e líder da Democracia Corinthiana (1982-1984)</p>
+                    </div>
+                </div>
+                
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="./rivelino.jpg" alt="Rivelino, ídolo corinthiano">
+                    </div>
+                    <div class="player-info">
+                        <h3>Rivelino</h3>
+                        <p>O "Rei da Pedalada", jogou entre 1974-1978</p>
+                    </div>
+                </div>
+                
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="./marcelinho carioca.jpg" alt="Marcelinho Carioca, ídolo corinthiano">
+                    </div>
+                    <div class="player-info">
+                        <h3>Marcelinho Carioca</h3>
+                        <p>"Pé de Anjo", ídolo dos anos 90 e maior artilheiro do século XX</p>
+                    </div>
+                </div>
+                
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="./cassio.jpg" alt="Cássio, ídolo corinthiano">
+                    </div>
+                    <div class="player-info">
+                        <h3>Cássio</h3>
+                        <p>Herói do título da Libertadores 2012</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="arena" aria-labelledby="arena-heading">
+            <h2 id="arena-heading">Nossa Casa</h2>
+            <figure>
+                <img src="./image-131.png" alt="Vista aérea da Arena Corinthians" width="800" height="400">
+                <figcaption>Arena Corinthians, inaugurada em 2014</figcaption>
+            </figure>
+            <p>Conhecida como "Itaquerão", a Arena Corinthians foi construída para a Copa do Mundo de 2014 e é considerada um dos melhores estádios do mundo.</p>
+            
+            <h3>Características</h3>
+            <ul>
+                <li><strong>Capacidade</strong>: 49.205 torcedores</li>
+                <li><strong>Área total</strong>: 204 mil m²</li>
+                <li><strong>Inauguração</strong>: 10 de maio de 2014</li>
+                <li><strong>Primeiro jogo</strong>: Corinthians 1 x 0 Figueirense</li>
+                <li><strong>Recorde de público</strong>: 48.196 pagantes (Corinthians x Palmeiras, 2025)</li>
+            </ul>
+        </section>
+        
+        <section id="torcida" aria-labelledby="torcida-heading">
+            <h2 id="torcida-heading">Fiel Torcida</h2>
+            <p>A torcida corinthiana é conhecida por sua paixão e fidelidade, em qualquer situação. Alguns fatos sobre a maior torcida do Brasil:</p>
+            
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-info">
+                        <h3>Números Impressionantes</h3>
+                        <p>Mais de 30 milhões de torcedores em todo o Brasil</p>
+                    </div>
+                </div>
+                
+                <div class="player-card">
+                    <div class="player-info">
+                        <h3>Gaviões da Fiel</h3>
+                        <p>Fundada em 1969, é a maior torcida organizada do país</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Funções para acessibilidade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuração do tamanho da fonte
+            const root = document.documentElement;
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                root.style.setProperty('--base-font-size', savedFontSize);
+                document.body.style.fontSize = savedFontSize;
+            }
+            
+            // Configuração do contraste
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+            
+            // Event listeners para os botões
+            document.getElementById('increaseFont').addEventListener('click', increaseFont);
+            document.getElementById('decreaseFont').addEventListener('click', decreaseFont);
+            document.getElementById('resetFont').addEventListener('click', resetFont);
+            document.getElementById('toggleContrast').addEventListener('click', toggleContrast);
+            
+            // Foco visível para elementos
+            document.addEventListener('keyup', function(e) {
+                if (e.key === 'Tab') {
+                    const focused = document.activeElement;
+                    focused.style.outline = '3px solid var(--gold)';
+                    focused.style.outlineOffset = '2px';
+                }
+            });
+        });
+        
+        function increaseFont() {
+            const root = document.documentElement;
+            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+            const newSize = currentSize + 2;
+            root.style.setProperty('--base-font-size', newSize + 'px');
+            document.body.style.fontSize = newSize + 'px';
+            localStorage.setItem('fontSize', newSize + 'px');
+        }
+        
+        function decreaseFont() {
+            const root = document.documentElement;
+            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+            if (currentSize > 12) {
+                const newSize = currentSize - 2;
+                root.style.setProperty('--base-font-size', newSize + 'px');
+                document.body.style.fontSize = newSize + 'px';
+                localStorage.setItem('fontSize', newSize + 'px');
+            }
+        }
+        
+        function resetFont() {
+            const root = document.documentElement;
+            root.style.setProperty('--base-font-size', '16px');
+            document.body.style.fontSize = '16px';
+            localStorage.setItem('fontSize', '16px');
+        }
+        
+        function toggleContrast() {
+            const body = document.body;
+            body.classList.toggle('high-contrast');
+            localStorage.setItem('highContrast', body.classList.contains('high-contrast'));
+        }
+        
+        // Adiciona aria-current para a navegação
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.removeAttribute('aria-current'));
+                this.setAttribute('aria-current', 'page');
+            });
+        });
+    </script>
+</body>
+</html>
